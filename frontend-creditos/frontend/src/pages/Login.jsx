@@ -19,7 +19,7 @@ export default function Login() {
     try {
       // Llama a POST /auth/login en el backend (ver src/services/api.js)
       const data = await iniciarSesion({ username, password });
-      login({ user_id: data.user_id, username: data.username });
+      login({ user_id: data.user_id, username: data.username, access_token: data.access_token });
       navigate("/dashboard");
     } catch (err) {
       // FastAPI devuelve el mensaje de error en err.response.data.detail
