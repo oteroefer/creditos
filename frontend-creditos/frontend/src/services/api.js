@@ -8,6 +8,14 @@ const api = axios.create({
   },
 });
 
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 // Endpoints de /users (backend/src/app/routers/users.py)
 export async function registrarUsuario({ username, email, password }) {
   const { data } = await api.post("/users/", { username, email, password });
