@@ -1,0 +1,58 @@
+:root {
+  --navy-900: #10192e;
+  --navy-800: #16233f;
+  --navy-600: #2b3c60;
+  --gold-500: #c99a44;
+  --gold-600: #b3842f;
+  --bg: #f4f6fa;
+  --surface: #ffffff;
+  --text-900: #1b2430;
+  --text-600: #566079;
+  --border: #e2e6ef;
+  --danger: #b3412f;
+  --danger-bg: #fbeae6;
+  --success: #2f7a4f;
+  --success-bg: #e9f6ee;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-900);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0;
+  color: var(--navy-900);
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: var(--navy-800);
+}
