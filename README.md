@@ -41,3 +41,20 @@ la administración de las operaciones comerciales.
 ### Documentación de código
 
 - Pydoc
+
+## Instalación de dependencias
+
+### Backend
+
+```bash
+cd backend/src
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+### Frontend
+
+```bash
+cd frontend-creditos/frontend
+npm install
+```
