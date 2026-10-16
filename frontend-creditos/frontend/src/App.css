@@ -193,3 +193,129 @@
   color: var(--text-600);
   line-height: 1.6;
 }
+
+.role-manager {
+  margin-top: 24px;
+}
+
+.role-manager h2 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.role-manager > p {
+  margin-bottom: 20px;
+}
+
+.role-manager__create {
+  display: flex;
+  align-items: end;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.role-manager__create .field {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.role-manager__create .field span {
+  display: block;
+  font-size: 13px;
+  color: var(--text-600);
+  margin-bottom: 6px;
+}
+
+.role-manager__create input,
+.role-manager__table select {
+  padding: 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font: inherit;
+  background: var(--bg);
+}
+
+.role-manager__edit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.role-manager__edit input {
+  min-width: 120px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font: inherit;
+  background: var(--bg);
+}
+
+.role-manager__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.role-manager__action {
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--navy-800);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.role-manager__action:hover {
+  border-color: var(--navy-600);
+}
+
+.role-manager__action--danger {
+  color: var(--danger);
+}
+
+.role-manager__action--danger:hover {
+  border-color: var(--danger);
+}
+
+.role-manager__create .btn-primary {
+  width: auto;
+  margin: 0;
+  padding-inline: 18px;
+}
+
+.role-manager__table-wrap {
+  overflow-x: auto;
+}
+
+.role-manager__table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.role-manager__table th,
+.role-manager__table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.role-manager__table th {
+  color: var(--text-600);
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .role-manager__create {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .role-manager__edit {
+    flex-wrap: wrap;
+  }
+
+  .role-manager__actions {
+    flex-wrap: wrap;
+  }
+}

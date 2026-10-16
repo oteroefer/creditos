@@ -80,7 +80,7 @@ export default function Registro() {
           >
             <option value="cliente">Cliente</option>
             <option value="vendedor">Vendedor</option>
-            <option value="adm">Administrador</option>
+            <option value="admin">Administrador</option>
           </select>
         </div>
 

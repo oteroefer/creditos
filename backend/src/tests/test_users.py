@@ -12,7 +12,7 @@ def test_crear_usuario(client):
     data = response.json()
     assert data["username"] == "fer"
     assert data["email"] == "fer@example.com"
-    assert data["role"] == "cliente"
+    assert data["role"]["name"] == "cliente"
     assert "password" not in data
     assert "hashed_password" not in data
 
@@ -62,4 +62,10 @@ def test_crear_usuario_con_rol_elegido(client):
     response = crear_usuario(client, role="vendedor")
 
     assert response.status_code == 201
-    assert response.json()["role"] == "vendedor"
+    assert response.json()["role"]["name"] == "vendedor"
+
+
+def test_crear_usuario_rol_invalido(client):
+    response = crear_usuario(client, role="inventado")
+
+    assert response.status_code == 422
