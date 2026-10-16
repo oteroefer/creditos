@@ -42,19 +42,18 @@ la administración de las operaciones comerciales.
 
 - Pydoc
 
-## Instalación de dependencias
+## Administración de roles
 
-### Backend
+Los usuarios pueden registrarse normalmente, pero solo una cuenta con el rol
+`admin` puede ver usuarios, crear roles y asignarlos. Para promover la primera
+cuenta, inicia el backend al menos una vez para que cree/actualice el esquema,
+registra la cuenta y ejecuta desde PowerShell:
 
-```bash
-cd backend/src
-.venv\Scripts\activate
-pip install -r requirements.txt
+```powershell
+Set-Location "C:\Users\Tobias Castro\Desktop\softwareTaller\backend\src"
+& "C:\Users\Tobias Castro\Desktop\softwareTaller\.venv\Scripts\python.exe" -m app.bootstrap_admin Toias43
 ```
 
-### Frontend
-
-```bash
-cd frontend-creditos/frontend
-npm install
-```
+El comando solo asigna `admin` a una cuenta existente; no crea usuarios ni
+cambia contraseñas. Luego vuelve a iniciar sesión. El panel para crear y
+asignar roles aparecerá en el dashboard de esa cuenta.

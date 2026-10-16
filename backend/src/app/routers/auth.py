@@ -21,6 +21,7 @@ def login(credentials: UserLogin, db: Session = Depends(get_db)):
         "message": "Login exitoso",
         "user_id": user.id,
         "username": user.username,
+        "role": user.role.name if user.role else None,
         "access_token": access_token,
         "token_type": "bearer",
     }
