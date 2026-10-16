@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { registrarUsuario } from "../services/api";
 
 export default function Registro() {
-  const [form, setForm] = useState({ username: "", email: "", password: "" });
+  const [form, setForm] = useState({ username: "", email: "", password: "", role: "cliente" });
   const [error, setError] = useState("");
   const [exito, setExito] = useState(false);
   const [cargando, setCargando] = useState(false);
@@ -18,7 +18,6 @@ export default function Registro() {
     setError("");
     setCargando(true);
     try {
-      // Llama a POST /users/ en el backend (ver src/services/api.js)
       await registrarUsuario(form);
       setExito(true);
       setTimeout(() => navigate("/login"), 1200);
@@ -68,6 +67,21 @@ export default function Registro() {
             onChange={handleChange}
             required
           />
+        </div>
+
+        <div className="field">
+          <label htmlFor="role">Rol de usuario</label>
+          <select
+            id="role"
+            name="role"
+            value={form.role}
+            onChange={handleChange}
+            required
+          >
+            <option value="cliente">Cliente</option>
+            <option value="vendedor">Vendedor</option>
+            <option value="adm">Administrador</option>
+          </select>
         </div>
 
         <div className="field">

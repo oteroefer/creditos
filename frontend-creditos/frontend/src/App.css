@@ -80,6 +80,18 @@
   margin-bottom: 16px;
 }
 
+.field select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  font-size: 14px;
+  color: #1e293b;
+  outline: none;
+  cursor: pointer;
+}
+
 .field label {
   display: block;
   font-size: 13px;
