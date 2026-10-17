@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext";
-import Navbar from "./components/Navbar";
-import RutaProtegida from "./components/RutaProtegida";
-import Login from "./pages/Login";
-import Registro from "./pages/Registro";
-import Dashboard from "./pages/Dashboard";
+import { AuthProvider } from "./features/sesion/AuthContext";
+import Navbar from "./compartido/componentes/Navbar";
+import RutaProtegida from "./features/sesion/componentes/RutaProtegida";
+import Login from "./features/sesion/paginas/Login";
+import Registro from "./features/sesion/paginas/Registro";
+import Panel from "./features/panel/paginas/Panel";
 import "./App.css";
 
 export default function App() {
@@ -21,7 +21,7 @@ export default function App() {
               path="/dashboard"
               element={
                 <RutaProtegida>
-                  <Dashboard />
+                  <Panel />
                 </RutaProtegida>
               }
             />
