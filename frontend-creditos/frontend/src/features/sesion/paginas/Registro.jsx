@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { registrarUsuario } from "../services/api";
+import { registrarUsuario } from "../api";
 
 export default function Registro() {
   const [form, setForm] = useState({ username: "", email: "", password: "", role: "cliente" });
@@ -80,7 +80,6 @@ export default function Registro() {
           >
             <option value="cliente">Cliente</option>
             <option value="vendedor">Vendedor</option>
-            <option value="admin">Administrador</option>
           </select>
         </div>
 

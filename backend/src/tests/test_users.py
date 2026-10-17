@@ -69,3 +69,9 @@ def test_crear_usuario_rol_invalido(client):
     response = crear_usuario(client, role="inventado")
 
     assert response.status_code == 422
+
+
+def test_no_se_puede_registrar_como_admin(client):
+    response = crear_usuario(client, role="admin")
+
+    assert response.status_code == 422

@@ -1,3 +1,5 @@
+"""Conexión a la base de datos PostgreSQL y manejo de sesiones."""
+
 from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.orm import sessionmaker, declarative_base
 
@@ -9,6 +11,10 @@ Base = declarative_base()
 
 
 def ensure_role_schema():
+    """Agrega la columna role_id a la tabla users si todavía no existe.
+
+    Sirve para bases de datos creadas antes de que existieran los roles.
+    """
     if not inspect(engine).has_table("users"):
         return
 
@@ -25,6 +31,7 @@ def ensure_role_schema():
 
 
 def get_db():
+    """Abre una sesión de base de datos para cada petición y la cierra al terminar."""
     db = SessionLocal()
     try:
         yield db

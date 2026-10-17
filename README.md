@@ -57,3 +57,40 @@ Set-Location "C:\Users\Tobias Castro\Desktop\softwareTaller\backend\src"
 El comando solo asigna `admin` a una cuenta existente; no crea usuarios ni
 cambia contraseñas. Luego vuelve a iniciar sesión. El panel para crear y
 asignar roles aparecerá en el dashboard de esa cuenta.
+
+## Documentación
+
+### Documentación de la API (endpoints)
+
+FastAPI la genera automáticamente. Con el backend corriendo
+(`uvicorn app.main:app --reload` desde `backend/src`):
+
+- **http://localhost:8000/docs**: Swagger. Lista todos los endpoints y permite
+  probarlos desde el navegador. Para los que requieren admin, toca **Authorize**
+  y pega el `access_token` que devuelve `/auth/login`.
+- **http://localhost:8000/redoc**: la misma información en formato de lectura.
+- **http://localhost:8000/openapi.json**: la especificación en JSON (sirve para
+  importarla en Postman).
+
+### Documentación del código (Pydoc)
+
+Pydoc arma la documentación a partir de los docstrings de cada módulo. Necesita
+importar el código, así que hay que tener el entorno virtual activado con las
+dependencias instaladas.
+
+Para verla en el navegador sin generar archivos:
+
+```powershell
+cd backend\src
+python -m pydoc -b
+```
+
+Para generar un archivo `.html` por módulo:
+
+```powershell
+cd backend\src
+python -m pydoc -w app app.models app.schemas app.security app.database app.dependencies app.bootstrap_admin app.routers.auth app.routers.users app.routers.roles app.main
+```
+
+`app.main` se conecta a PostgreSQL al importarse: si la base no está levantada,
+quítalo del comando.
