@@ -1,3 +1,5 @@
+"""Punto de entrada de la API: crea las tablas y registra todas las rutas."""
+
 from fastapi import FastAPI
 from app.database import Base, engine, ensure_role_schema
 from app.routers import auth, roles, users

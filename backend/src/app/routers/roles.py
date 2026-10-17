@@ -1,3 +1,5 @@
+"""Rutas de roles: listar, crear, renombrar y eliminar. Solo para administradores."""
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
@@ -12,6 +14,7 @@ router = APIRouter(prefix="/roles", tags=["roles"])
 
 @router.get("/", response_model=list[RoleOut])
 def list_roles(db: Session = Depends(get_db), _: User = Depends(require_admin)):
+    """Lista todos los roles ordenados por nombre."""
     return db.query(Role).order_by(Role.name).all()
 
 
@@ -21,6 +24,7 @@ def create_role(
     db: Session = Depends(get_db),
     _: User = Depends(require_admin),
 ):
+    """Crea un rol nuevo. Responde 409 si ya existe un rol con ese nombre."""
     name = role_data.name.strip().lower()
     if len(name) < 2:
         raise HTTPException(status_code=422, detail="El nombre del rol debe tener al menos 2 caracteres")
@@ -43,6 +47,7 @@ def update_role(
     db: Session = Depends(get_db),
     _: User = Depends(require_admin),
 ):
+    """Cambia el nombre de un rol. El rol admin no se puede renombrar."""
     role = db.query(Role).filter(Role.id == role_id).first()
     if role is None:
         raise HTTPException(status_code=404, detail="Rol no encontrado")
@@ -67,6 +72,7 @@ def delete_role(
     db: Session = Depends(get_db),
     _: User = Depends(require_admin),
 ):
+    """Elimina un rol. No se puede eliminar el rol admin ni un rol asignado a usuarios."""
     role = db.query(Role).filter(Role.id == role_id).first()
     if role is None:
         raise HTTPException(status_code=404, detail="Rol no encontrado")

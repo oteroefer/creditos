@@ -16,4 +16,19 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Si el token venció o no es válido, el backend responde 401: se cierra la sesión.
+// El login se excluye porque ahí un 401 significa usuario o contraseña incorrectos.
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const esLogin = error.config?.url?.includes("/auth/login");
+    if (error.response?.status === 401 && !esLogin && localStorage.getItem("token")) {
+      localStorage.removeItem("usuario");
+      localStorage.removeItem("token");
+      window.location.href = "/login";
+    }
+    return Promise.reject(error);
+  },
+);
+
 export default api;

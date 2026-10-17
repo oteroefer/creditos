@@ -1,9 +1,13 @@
+"""Tablas de la base de datos: usuarios y roles."""
+
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from app.database import Base
 
 
 class Role(Base):
+    """Rol que puede tener un usuario, por ejemplo cliente, vendedor o admin."""
+
     __tablename__ = "roles"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -13,6 +17,8 @@ class Role(Base):
 
 
 class User(Base):
+    """Usuario registrado en el sistema, con su contraseña encriptada y su rol."""
+
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)

@@ -1,8 +1,8 @@
 import api from "../../compartido/api";
 
 // Endpoints de /users (backend/src/app/routers/users.py)
-export async function registrarUsuario({ username, email, password }) {
-  const { data } = await api.post("/users/", { username, email, password });
+export async function registrarUsuario({ username, email, password, role }) {
+  const { data } = await api.post("/users/", { username, email, password, role });
   return data;
 }
 

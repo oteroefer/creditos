@@ -1,3 +1,8 @@
+"""Comando para darle el rol admin a una cuenta que ya existe.
+
+Uso: python -m app.bootstrap_admin <usuario>
+"""
+
 import argparse
 
 from app.database import Base, SessionLocal, engine, ensure_role_schema
@@ -5,6 +10,7 @@ from app.models import Role, User
 
 
 def main() -> None:
+    """Busca el usuario indicado y le asigna el rol admin, creándolo si no existe."""
     parser = argparse.ArgumentParser(
         description="Asigna el rol admin a una cuenta existente."
     )

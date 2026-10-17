@@ -1,3 +1,5 @@
+"""Rutas de autenticación: inicio de sesión."""
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
@@ -10,6 +12,7 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 
 @router.post("/login")
 def login(credentials: UserLogin, db: Session = Depends(get_db)):
+    """Verifica usuario y contraseña y devuelve un token de acceso con los datos del usuario."""
     user = db.query(User).filter(User.username == credentials.username).first()
 
     if not user or not verify_password(credentials.password, user.hashed_password):

@@ -1,3 +1,5 @@
+"""Permisos de las rutas: obtener el usuario que inició sesión y exigir rol admin."""
+
 import jwt
 from fastapi import Depends, HTTPException
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
@@ -14,6 +16,10 @@ def get_current_user(
     credentials: HTTPAuthorizationCredentials | None = Depends(bearer_scheme),
     db: Session = Depends(get_db),
 ) -> User:
+    """Devuelve el usuario dueño del token enviado en la petición.
+
+    Responde 401 si no hay token, si es inválido o vencido, o si el usuario ya no existe.
+    """
     unauthorized = HTTPException(
         status_code=401,
         detail="Autenticación requerida",
@@ -38,6 +44,7 @@ def get_current_user(
 
 
 def require_admin(user: User = Depends(get_current_user)) -> User:
+    """Devuelve el usuario si tiene rol admin; si no, responde 403."""
     if user.role is None or user.role.name != "admin":
         raise HTTPException(status_code=403, detail="Se requiere el rol de administrador")
     return user
