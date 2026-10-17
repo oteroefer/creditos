@@ -1,5 +1,4 @@
 import { useAuth } from "../../sesion/AuthContext";
-import Administracion from "../../administracion/Administracion";
 
 export default function Panel() {
   const { usuario } = useAuth();
@@ -17,8 +16,6 @@ export default function Panel() {
           Bienvenido al sistema de ventas de créditos. Más avances pronto.
         </p>
       </div>
-
-      {usuario?.role === "admin" && <Administracion />}
     </div>
   );
 }
