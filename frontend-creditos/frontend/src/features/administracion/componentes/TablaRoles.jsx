@@ -13,7 +13,7 @@ export default function TablaRoles({
       <table className="role-manager__table">
         <thead>
           <tr>
-            <th>Roles creados</th>
+            <th>Nombre</th>
             <th>Acciones</th>
           </tr>
         </thead>

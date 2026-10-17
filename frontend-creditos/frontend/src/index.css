@@ -1,21 +1,22 @@
 :root {
-  --navy-900: #10192e;
-  --navy-800: #16233f;
-  --navy-600: #2b3c60;
-  --gold-500: #c99a44;
-  --gold-600: #b3842f;
-  --bg: #f4f6fa;
+  --violeta-900: #2e2657;
+  --violeta-800: #3a3170;
+  --violeta-600: #625b7f;
+  --acento: #7d6bf4;
+  --acento-oscuro: #6553e6;
+  --lavanda: #e0e8ff;
+  --bg: #f1f2f8;
   --surface: #ffffff;
-  --text-900: #1b2430;
-  --text-600: #566079;
-  --border: #e2e6ef;
+  --text-900: #221d40;
+  --text-600: #625b7f;
+  --border: #dedfe9;
   --danger: #b3412f;
   --danger-bg: #fbeae6;
   --success: #2f7a4f;
   --success-bg: #e9f6ee;
 
-  --font-display: "Fraunces", Georgia, serif;
-  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Rubik", system-ui, sans-serif;
+  --font-body: "Rubik", system-ui, -apple-system, sans-serif;
 }
 
 * {
@@ -42,7 +43,7 @@ h3 {
   font-family: var(--font-display);
   font-weight: 600;
   margin: 0;
-  color: var(--navy-900);
+  color: var(--violeta-900);
 }
 
 p {
@@ -54,5 +55,5 @@ button {
 }
 
 a {
-  color: var(--navy-800);
+  color: var(--violeta-800);
 }

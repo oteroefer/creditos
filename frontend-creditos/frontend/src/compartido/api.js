@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Peticiones al backend. Cada feature arma sus llamadas en su propio api.js
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: import.meta.env.VITE_API_URL ?? "/api",
   headers: {
     "Content-Type": "application/json",
   },
