@@ -6,7 +6,7 @@ export default function Panel() {
   return (
     <div className="dashboard">
       <div className="dashboard__welcome">
-        <h1>Hola, {usuario?.username}</h1>
+        <h2>Hola, {usuario?.username}</h2>
         <p>Panel principal del sistema de ventas de créditos.</p>
       </div>
 

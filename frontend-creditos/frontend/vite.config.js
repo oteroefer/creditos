@@ -6,10 +6,13 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
+    // Las llamadas al backend salen con /api adelante (por ejemplo /api/roles) y acá se
+    // quita antes de reenviarlas. Así las páginas del frontend no chocan con las rutas de la API.
     proxy: {
-      "/users": "http://localhost:8000",
-      "/auth": "http://localhost:8000",
-      "/roles": "http://localhost:8000",
+      "/api": {
+        target: "http://localhost:8000",
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
     },
   },
 });

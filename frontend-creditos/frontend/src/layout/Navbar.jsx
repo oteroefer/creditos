@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../features/sesion/AuthContext";
+import { useAuth } from "../features/sesion/AuthContext";
 
 export default function Navbar() {
   const { usuario, logout } = useAuth();
