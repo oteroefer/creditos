@@ -26,9 +26,11 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
     Si el rol todavía no existe en la base de datos, lo crea. Responde 400 si el
     usuario o el email ya están registrados.
     """
-    role = db.query(Role).filter(Role.name == user.role).first()
+    # Forzamos "cliente" por defecto:
+    rol_por_defecto = "cliente"
+    role = db.query(Role).filter(Role.name == rol_por_defecto).first()
     if role is None:
-        role = Role(name=user.role)
+        role = Role(name=rol_por_defecto)
         db.add(role)
 
     new_user = User(

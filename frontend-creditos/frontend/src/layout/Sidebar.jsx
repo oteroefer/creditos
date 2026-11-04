@@ -46,7 +46,7 @@ export default function Sidebar() {
         <span className="avatar">{usuario?.username?.[0]}</span>
         <div className="sidebar__usuario-datos">
           <p className="sidebar__usuario-nombre">{usuario?.username}</p>
-          <p className="sidebar__usuario-rol">{usuario?.role ?? "Sin rol"}</p>
+          <p className="sidebar__usuario-rol">{usuario?.role ?? "cliente"}</p>
         </div>
         <button
           className="sidebar__salir"

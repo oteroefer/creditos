@@ -1,21 +1,26 @@
 import { useAuth } from "../../sesion/AuthContext";
+import AdminPanel from './AdminPanel';
+import VendedorPanel from './VendedorPanel';
+import ClientePanel from './ClientePanel';
 
 export default function Panel() {
   const { usuario } = useAuth();
 
-  return (
-    <div className="dashboard">
-      <div className="dashboard__welcome">
-        <h2>Hola, {usuario?.username}</h2>
-        <p>Panel principal del sistema de ventas de créditos.</p>
-      </div>
+  // Extraemos el rol desde el contexto global de autenticación
+  const role = typeof usuario?.role === 'object' ? usuario.role?.name : usuario?.role;
 
-      <div className="dashboard-card">
-        <h3>Panel principal</h3>
-        <p>
-          Bienvenido al sistema de ventas de créditos. Más avances pronto.
-        </p>
-      </div>
-    </div>
-  );
+  console.log("Usuario desde AuthContext:", usuario);
+  console.log("Rol detectado:", role);
+
+  // Renderizado condicional según el rol
+  if (role === 'vendedor') {
+    return <VendedorPanel />;
+  }
+
+  if (role === 'admin') {
+    return <AdminPanel />;
+  }
+
+  // Por defecto o para clientes
+  return <ClientePanel />;
 }
