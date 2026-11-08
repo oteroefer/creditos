@@ -30,6 +30,22 @@ def ensure_role_schema():
         connection.execute(text(statement))
 
 
+def ensure_product_schema():
+    """Agrega la columna imagen_url a la tabla products si todavía no existe.
+
+    Sirve para bases de datos creadas antes de que los productos tuvieran imagen.
+    """
+    if not inspect(engine).has_table("products"):
+        return
+
+    columns = {column["name"] for column in inspect(engine).get_columns("products")}
+    if "imagen_url" in columns:
+        return
+
+    with engine.begin() as connection:
+        connection.execute(text("ALTER TABLE products ADD COLUMN imagen_url VARCHAR(500)"))
+
+
 def get_db():
     """Abre una sesión de base de datos para cada petición y la cierra al terminar."""
     db = SessionLocal()

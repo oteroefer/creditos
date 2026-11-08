@@ -62,35 +62,60 @@ asignar roles aparecerá en el dashboard de esa cuenta.
 
 ### Documentación de la API (endpoints)
 
-FastAPI la genera automáticamente. Con el backend corriendo
+FastAPI genera automáticamente. Con el backend corriendo
 (`uvicorn app.main:app --reload` desde `backend/src`):
 
 - **http://localhost:8000/docs**: Swagger. Lista todos los endpoints y permite
   probarlos desde el navegador. Para los que requieren admin, toca **Authorize**
   y pega el `access_token` que devuelve `/auth/login`.
 - **http://localhost:8000/redoc**: la misma información en formato de lectura.
-- **http://localhost:8000/openapi.json**: la especificación en JSON (sirve para
-  importarla en Postman).
+- **http://localhost:8000/openapi.json**: la especificación en JSON
 
 ### Documentación del código (Pydoc)
 
 Pydoc arma la documentación a partir de los docstrings de cada módulo. Necesita
 importar el código, así que hay que tener el entorno virtual activado con las
 dependencias instaladas.
-
-Para verla en el navegador sin generar archivos:
+Para ver en el navegador sin generar archivos:
 
 ```powershell
 cd backend\src
 python -m pydoc -b
 ```
-
 Para generar un archivo `.html` por módulo:
 
 ```powershell
 cd backend\src
-python -m pydoc -w app app.models app.schemas app.security app.database app.dependencies app.bootstrap_admin app.routers.auth app.routers.users app.routers.roles app.main
+python -m pydoc -w app app.core app.core.database app.core.security app.core.dependencies app.auth app.auth.router app.auth.schemas app.usuarios app.usuarios.models app.usuarios.schemas app.usuarios.router app.roles app.roles.models app.roles.schemas app.roles.router app.productos app.productos.models app.productos.schemas app.productos.router app.productos.seed app.bootstrap_admin app.main
+```
+`app.main` se conecta a PostgreSQL al importarse: si la base no está levantada,
+quíta del comando.
+
+## Estructura del backend
+
+El código de `backend/src/app` está separado por flujo. Cada módulo tiene su tabla
+(`models.py`), los formatos de entrada y salida (`schemas.py`) y sus rutas (`router.py`):
+
+```
+app/
+├── main.py              crea las tablas y registra las rutas de cada módulo
+├── bootstrap_admin.py   comando para dar el rol admin a una cuenta
+├── core/                lo compartido: base de datos, seguridad (bcrypt, JWT) y permisos
+├── auth/                inicio de sesión
+├── usuarios/            registro, listado y asignación de roles
+├── roles/               alta, modificación y baja de roles
+└── productos/           catálogo de productos (seed.py carga productos de ejemplo)
 ```
 
-`app.main` se conecta a PostgreSQL al importarse: si la base no está levantada,
-quítalo del comando.
+Para un módulo nuevo (por ejemplo la simulación de créditos), crear su carpeta con
+esos tres archivos y registrar el router en `main.py`.
+
+## Productos de ejemplo
+
+Con el entorno virtual activado, desde `backend/src`:
+
+```powershell
+python -m app.productos.seed
+```
+
+Carga 10 productos con imagen de ejemplo. Los que ya existen (mismo código) se saltean.

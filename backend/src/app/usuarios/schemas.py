@@ -1,29 +1,10 @@
-"""Formatos de los datos que la API recibe y devuelve."""
+"""Formatos de los datos de usuarios que la API recibe y devuelve."""
 
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
+from pydantic import BaseModel, ConfigDict, EmailStr
 
-
-class RoleCreate(BaseModel):
-    """Datos para crear o renombrar un rol."""
-
-    name: str = Field(min_length=2, max_length=50)
-
-    @field_validator("name")
-    @classmethod
-    def normalize_name(cls, name: str) -> str:
-        """Quita espacios al principio y al final y pasa el nombre a minúsculas."""
-        return name.strip().lower()
-
-
-class RoleOut(BaseModel):
-    """Rol tal como lo devuelve la API."""
-
-    model_config = ConfigDict(from_attributes=True)
-
-    id: int
-    name: str
+from app.roles.schemas import RoleOut
 
 
 class UserCreate(BaseModel):
@@ -38,11 +19,6 @@ class UserCreate(BaseModel):
     password: str
     role: Literal["cliente", "vendedor"] = "cliente"
 
-class UserLogin(BaseModel):
-    """Datos para iniciar sesión."""
-
-    username: str
-    password: str
 
 class UserOut(BaseModel):
     """Usuario tal como lo devuelve la API, sin la contraseña."""

@@ -17,7 +17,6 @@ api.interceptors.request.use((config) => {
 });
 
 // Si el token venció o no es válido, el backend responde 401: se cierra la sesión.
-// El login se excluye porque ahí un 401 significa usuario o contraseña incorrectos.
 api.interceptors.response.use(
   (response) => response,
   (error) => {
