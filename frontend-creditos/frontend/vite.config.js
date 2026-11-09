@@ -1,9 +1,10 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 
 // Puerto 5173 es default de Vite; el backend FastAPI corre en el 8000
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   server: {
     port: 5173,
     // Las llamadas al backend salen con /api adelante (por ejemplo /api/roles) y acá se

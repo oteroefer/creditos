@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { registrarUsuario } from "../api";
 
 export default function Registro() {
-  const [form, setForm] = useState({ username: "", email: "", password: "", role: "cliente" });
+  const [form, setForm] = useState({ username: "", email: "", password: "" });
   const [error, setError] = useState("");
   const [exito, setExito] = useState(false);
   const [cargando, setCargando] = useState(false);
@@ -67,20 +67,6 @@ export default function Registro() {
             onChange={handleChange}
             required
           />
-        </div>
-
-        <div className="field">
-          <label htmlFor="role">Rol de usuario</label>
-          <select
-            id="role"
-            name="role"
-            value={form.role}
-            onChange={handleChange}
-            required
-          >
-            <option value="cliente">Cliente</option>
-            <option value="vendedor">Vendedor</option>
-          </select>
         </div>
 
         <div className="field">

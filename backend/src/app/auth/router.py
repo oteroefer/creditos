@@ -3,10 +3,10 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from app.database import get_db
-from app.models import User
-from app.schemas import UserLogin
-from app.security import create_access_token, verify_password
+from app.core.database import get_db
+from app.usuarios.models import User
+from app.auth.schemas import UserLogin
+from app.core.security import create_access_token, verify_password
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -24,7 +24,7 @@ def login(credentials: UserLogin, db: Session = Depends(get_db)):
         "message": "Login exitoso",
         "user_id": user.id,
         "username": user.username,
-        "role": user.role.name if user.role else None,
+        "role": user.role.name if hasattr(user.role, 'name') else user.role,
         "access_token": access_token,
         "token_type": "bearer",
     }

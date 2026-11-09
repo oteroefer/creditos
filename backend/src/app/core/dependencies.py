@@ -5,9 +5,9 @@ from fastapi import Depends, HTTPException
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.orm import Session
 
-from app.database import get_db
-from app.models import User
-from app.security import ALGORITHM, SECRET_KEY
+from app.core.database import get_db
+from app.usuarios.models import User
+from app.core.security import ALGORITHM, SECRET_KEY
 
 bearer_scheme = HTTPBearer(auto_error=False)
 

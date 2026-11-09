@@ -4,10 +4,11 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
-from app.database import get_db
-from app.dependencies import require_admin
-from app.models import Role, User
-from app.schemas import RoleCreate, RoleOut
+from app.core.database import get_db
+from app.core.dependencies import require_admin
+from app.roles.models import Role
+from app.usuarios.models import User
+from app.roles.schemas import RoleCreate, RoleOut
 
 router = APIRouter(prefix="/roles", tags=["roles"])
 

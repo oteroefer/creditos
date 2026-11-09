@@ -5,8 +5,9 @@ Uso: python -m app.bootstrap_admin <usuario>
 
 import argparse
 
-from app.database import Base, SessionLocal, engine, ensure_role_schema
-from app.models import Role, User
+from app.core.database import Base, SessionLocal, engine, ensure_role_schema
+from app.roles.models import Role
+from app.usuarios.models import User
 
 
 def main() -> None:

@@ -4,11 +4,12 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
 
-from app.database import get_db
-from app.dependencies import require_admin
-from app.models import Role, User
-from app.schemas import UserCreate, UserOut, UserRoleUpdate
-from app.security import hash_password
+from app.core.database import get_db
+from app.core.dependencies import require_admin
+from app.roles.models import Role
+from app.usuarios.models import User
+from app.usuarios.schemas import UserCreate, UserOut, UserRoleUpdate
+from app.core.security import hash_password
 
 router = APIRouter(prefix="/users", tags=["users"])
 
@@ -21,14 +22,14 @@ def list_users(db: Session = Depends(get_db), _: User = Depends(require_admin)):
 
 @router.post("/", response_model=UserOut, status_code=201)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
-    """Registra un usuario nuevo con el rol elegido.
+    """Registra un usuario nuevo con el rol cliente.
 
-    Si el rol todavía no existe en la base de datos, lo crea. Responde 400 si el
-    usuario o el email ya están registrados.
+    Si el rol cliente todavía no existe en la base de datos, lo crea. Responde 400 si
+    el usuario o el email ya están registrados.
     """
-    role = db.query(Role).filter(Role.name == user.role).first()
+    role = db.query(Role).filter(Role.name == "cliente").first()
     if role is None:
-        role = Role(name=user.role)
+        role = Role(name="cliente")
         db.add(role)
 
     new_user = User(

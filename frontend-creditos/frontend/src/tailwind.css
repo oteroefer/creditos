@@ -1,0 +1,31 @@
+/*
+ * Tailwind sin el preflight (su reset de estilos), para no cambiar las pantallas que
+ * ya usan App.css. Solo se cargan los colores/tamaños y las clases utilitarias.
+ *
+ * Las utilidades van sin @layer a propósito: index.css no usa capas, y los estilos sin
+ * capa siempre les ganan a los que están en una (p { margin: 0 } anularía a mt-2).
+ */
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css";
+
+/* Paleta y fuentes del proyecto (definidas en index.css) como clases: bg-violeta, text-texto, font-titulo, etc. */
+@theme {
+  --font-sans: var(--font-body);
+  --font-titulo: var(--font-display);
+
+  --color-negro: var(--negro);
+  --color-negro-2: var(--negro-2);
+  --color-violeta: var(--violeta);
+  --color-violeta-claro: var(--violeta-claro);
+  --color-violeta-oscuro: var(--violeta-oscuro);
+  --color-lavanda: var(--lavanda);
+  --color-fondo: var(--bg);
+  --color-superficie: var(--surface);
+  --color-texto: var(--text-900);
+  --color-texto-suave: var(--text-600);
+  --color-borde: var(--border);
+  --color-peligro: var(--danger);
+  --color-peligro-fondo: var(--danger-bg);
+  --color-exito: var(--success);
+  --color-exito-fondo: var(--success-bg);
+}

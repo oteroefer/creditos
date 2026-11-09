@@ -1,22 +1,25 @@
+/* Paleta negro + violeta. Sobre --violeta el texto va en --negro (blanco no tiene contraste). */
 :root {
-  --violeta-900: #2e2657;
-  --violeta-800: #3a3170;
-  --violeta-600: #625b7f;
-  --acento: #7d6bf4;
-  --acento-oscuro: #6553e6;
-  --lavanda: #e0e8ff;
-  --bg: #f1f2f8;
+  --negro: #111111;
+  --negro-2: #262626;
+  --menu-texto: #c4c4cc;
+  --menu-suave: #8f8f99;
+  --violeta: #a78bfa;
+  --violeta-claro: #c4b5fd;
+  --violeta-oscuro: #6d28d9;
+  --lavanda: #ede9fe;
+  --bg: #ececf0;
   --surface: #ffffff;
-  --text-900: #221d40;
-  --text-600: #625b7f;
-  --border: #dedfe9;
+  --text-900: #111111;
+  --text-600: #52525b;
+  --border: #e7e5ee;
   --danger: #b3412f;
   --danger-bg: #fbeae6;
   --success: #2f7a4f;
   --success-bg: #e9f6ee;
 
-  --font-display: "Rubik", system-ui, sans-serif;
-  --font-body: "Rubik", system-ui, -apple-system, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 * {
@@ -43,7 +46,7 @@ h3 {
   font-family: var(--font-display);
   font-weight: 600;
   margin: 0;
-  color: var(--violeta-900);
+  color: var(--text-900);
 }
 
 p {
@@ -55,5 +58,5 @@ button {
 }
 
 a {
-  color: var(--violeta-800);
+  color: var(--violeta-oscuro);
 }

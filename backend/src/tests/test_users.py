@@ -58,20 +58,15 @@ def test_login_usuario_inexistente(client):
     assert response.status_code == 401
 
 
-def test_crear_usuario_con_rol_elegido(client):
+def test_no_se_puede_registrar_como_vendedor(client):
     response = crear_usuario(client, role="vendedor")
 
     assert response.status_code == 201
-    assert response.json()["role"]["name"] == "vendedor"
-
-
-def test_crear_usuario_rol_invalido(client):
-    response = crear_usuario(client, role="inventado")
-
-    assert response.status_code == 422
+    assert response.json()["role"]["name"] == "cliente"
 
 
 def test_no_se_puede_registrar_como_admin(client):
     response = crear_usuario(client, role="admin")
 
-    assert response.status_code == 422
+    assert response.status_code == 201
+    assert response.json()["role"]["name"] == "cliente"
