@@ -1,4 +1,4 @@
-const formatoPrecio = new Intl.NumberFormat("es", { maximumFractionDigits: 2 });
+import { formatearPrecio } from "../formato";
 
 export default function TablaProductos({ productos, esAdmin, onEdit, onBaja, onReactivar }) {
   if (productos.length === 0) {
@@ -39,7 +39,7 @@ export default function TablaProductos({ productos, esAdmin, onEdit, onBaja, onR
               <td>{producto.codigo}</td>
               <td>{producto.nombre}</td>
               <td>{producto.descripcion || "-"}</td>
-              <td>{formatoPrecio.format(producto.precio)}</td>
+              <td>{formatearPrecio(producto.precio)}</td>
               <td>{producto.stock}</td>
               {esAdmin && <td>{producto.activo ? "Activo" : "Inactivo"}</td>}
               {esAdmin && (

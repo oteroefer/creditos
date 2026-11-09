@@ -1,10 +1,15 @@
 import api from "../../compartido/api";
 
-// Endpoints de /productos (backend/src/app/routers/productos.py)
+// Endpoints de /productos (backend/src/app/productos/router.py)
 export async function listarProductos(incluirInactivos = false) {
   const { data } = await api.get("/productos/", {
     params: incluirInactivos ? { incluir_inactivos: true } : {},
   });
+  return data;
+}
+
+export async function obtenerProducto(productoId) {
+  const { data } = await api.get(`/productos/${productoId}`);
   return data;
 }
 

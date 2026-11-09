@@ -10,6 +10,7 @@ import Panel from "./features/panel/paginas/Panel";
 import PaginaUsuarios from "./features/administracion/paginas/PaginaUsuarios";
 import PaginaRoles from "./features/administracion/paginas/PaginaRoles";
 import PaginaProductos from "./features/productos/paginas/PaginaProductos";
+import PaginaDetalleProducto from "./features/productos/paginas/PaginaDetalleProducto";
 import "./App.css";
 
 export default function App() {
@@ -31,6 +32,7 @@ export default function App() {
           >
             <Route path="/dashboard" element={<Panel />} />
             <Route path="/productos" element={<PaginaProductos />} />
+            <Route path="/productos/:id" element={<PaginaDetalleProducto />} />
             <Route
               path="/usuarios"
               element={

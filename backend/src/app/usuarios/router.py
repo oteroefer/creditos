@@ -22,16 +22,14 @@ def list_users(db: Session = Depends(get_db), _: User = Depends(require_admin)):
 
 @router.post("/", response_model=UserOut, status_code=201)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
-    """Registra un usuario nuevo con el rol elegido.
+    """Registra un usuario nuevo con el rol cliente.
 
-    Si el rol todavía no existe en la base de datos, lo crea. Responde 400 si el
-    usuario o el email ya están registrados.
+    Si el rol cliente todavía no existe en la base de datos, lo crea. Responde 400 si
+    el usuario o el email ya están registrados.
     """
-    # Forzamos "cliente" por defecto:
-    rol_por_defecto = "cliente"
-    role = db.query(Role).filter(Role.name == rol_por_defecto).first()
+    role = db.query(Role).filter(Role.name == "cliente").first()
     if role is None:
-        role = Role(name=rol_por_defecto)
+        role = Role(name="cliente")
         db.add(role)
 
     new_user = User(

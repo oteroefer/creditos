@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { listarProductos } from "../api";
-
-const formatoPrecio = new Intl.NumberFormat("es", { maximumFractionDigits: 2 });
+import { formatearPrecio } from "../formato";
 
 // Vitrina de productos para el cliente. El backend solo le devuelve los activos y acá no
 // se muestra el stock. Con limite muestra solo los primeros (vista previa del panel) y un
@@ -78,17 +77,23 @@ function TarjetaProducto({ producto }) {
           <p className="line-clamp-2 text-sm text-texto-suave">{producto.descripcion}</p>
         )}
 
-        <span className="mt-auto pt-2 text-lg font-semibold text-texto">
-          {formatoPrecio.format(producto.precio)}
-        </span>
-        <button
-          type="button"
-          disabled
-          title="Próximamente"
-          className="mt-2 cursor-not-allowed rounded-md border-0 bg-violeta px-4 py-2 text-sm font-medium text-negro opacity-60"
+        <div className="mt-auto flex items-center justify-between gap-2 pt-2">
+          <span className="text-lg font-semibold text-texto">
+            {formatearPrecio(producto.precio)}
+          </span>
+          {!disponible && (
+            <span className="rounded-full bg-lavanda px-2.5 py-0.5 text-xs text-texto-suave">
+              No disponible
+            </span>
+          )}
+        </div>
+        <Link
+          to={`/productos/${producto.id}`}
+          className="mt-2 rounded-md bg-violeta px-4 py-2.5 text-center text-sm font-medium text-negro no-underline transition hover:bg-violeta-claro"
+          aria-label={`Ver más sobre ${producto.nombre}`}
         >
-          {disponible ? "Simular crédito (próximamente)" : "No disponible"}
-        </button>
+          Ver más
+        </Link>
       </div>
     </article>
   );

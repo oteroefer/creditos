@@ -1,6 +1,6 @@
 import api from "../../compartido/api";
 
-// Endpoints de /users (backend/src/app/routers/users.py)
+// Endpoints de /users (backend/src/app/usuarios/router.py)
 export async function listarUsuarios() {
   const { data } = await api.get("/users/");
   return data;
@@ -11,7 +11,7 @@ export async function asignarRol(userId, roleId) {
   return data;
 }
 
-// Endpoints de /roles (backend/src/app/routers/roles.py)
+// Endpoints de /roles (backend/src/app/roles/router.py)
 export async function listarRoles() {
   const { data } = await api.get("/roles/");
   return data;

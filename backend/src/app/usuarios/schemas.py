@@ -1,7 +1,5 @@
 """Formatos de los datos de usuarios que la API recibe y devuelve."""
 
-from typing import Literal
-
 from pydantic import BaseModel, ConfigDict, EmailStr
 
 from app.roles.schemas import RoleOut
@@ -10,14 +8,13 @@ from app.roles.schemas import RoleOut
 class UserCreate(BaseModel):
     """Datos para registrar un usuario nuevo.
 
-    El rol predeterminado es cliente. El rol admin no se acepta en el registro:
-    solo se asigna con bootstrap_admin o desde el panel de administración.
+    No se elige rol: toda cuenta nueva queda como cliente. Los roles vendedor y admin
+    solo los asigna un administrador (o bootstrap_admin para el primer admin).
     """
 
     username: str
     email: EmailStr
     password: str
-    role: Literal["cliente", "vendedor"] = "cliente"
 
 
 class UserOut(BaseModel):
