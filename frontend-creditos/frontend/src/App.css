@@ -6,7 +6,7 @@
 }
 
 .navbar {
-  background: var(--violeta-900);
+  background: var(--negro);
   color: white;
   padding: 18px 32px;
   display: flex;
@@ -21,7 +21,7 @@
 }
 
 .navbar__brand span {
-  color: var(--acento);
+  color: var(--violeta);
 }
 
 .navbar__user {
@@ -29,12 +29,12 @@
   align-items: center;
   gap: 16px;
   font-size: 14px;
-  color: #c9c5e0;
+  color: var(--menu-texto);
 }
 
 .navbar__logout {
   background: transparent;
-  border: 1px solid var(--violeta-600);
+  border: 1px solid var(--negro-2);
   color: white;
   padding: 7px 14px;
   border-radius: 6px;
@@ -44,7 +44,7 @@
 }
 
 .navbar__logout:hover {
-  border-color: var(--acento);
+  border-color: var(--violeta);
 }
 
 /* ---------- Layout con sidebar ---------- */
@@ -71,8 +71,8 @@
   flex-direction: column;
   gap: 28px;
   padding: 24px 14px;
-  background: var(--violeta-900);
-  color: #c9c5e0;
+  background: var(--negro);
+  color: var(--menu-texto);
 }
 
 .sidebar__logo {
@@ -91,7 +91,8 @@
   display: grid;
   place-items: center;
   border-radius: 5px;
-  background: var(--acento);
+  background: var(--violeta);
+  color: var(--negro);
   font-family: var(--font-body);
   font-size: 16px;
   font-weight: 600;
@@ -103,7 +104,7 @@
   font-size: 11px;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  color: var(--violeta-600);
+  color: var(--menu-suave);
 }
 
 .sidebar__titulo:not(:first-child) {
@@ -123,7 +124,7 @@
   gap: 12px;
   padding: 11px 12px;
   border-radius: 5px;
-  color: #c9c5e0;
+  color: var(--menu-texto);
   font-size: 14.5px;
   text-decoration: none;
   transition: background 0.15s ease, color 0.15s ease;
@@ -138,7 +139,7 @@
 }
 
 .sidebar__link:focus-visible {
-  outline: 2px solid var(--acento);
+  outline: 2px solid var(--violeta);
   outline-offset: 2px;
 }
 
@@ -149,8 +150,8 @@
 
 .sidebar__link--activo,
 .sidebar__link--activo:hover {
-  background: var(--acento);
-  color: white;
+  background: var(--violeta);
+  color: var(--negro);
   font-weight: 500;
 }
 
@@ -179,7 +180,7 @@
 
 .sidebar__usuario-rol {
   font-size: 12px;
-  color: #a39ec4;
+  color: var(--menu-suave);
   text-transform: capitalize;
 }
 
@@ -192,7 +193,7 @@
   border: none;
   border-radius: 5px;
   background: transparent;
-  color: #c9c5e0;
+  color: var(--menu-texto);
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
 }
@@ -209,8 +210,8 @@
   place-items: center;
   flex-shrink: 0;
   border-radius: 50%;
-  background: var(--lavanda);
-  color: var(--violeta-900);
+  background: var(--violeta);
+  color: var(--negro);
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
@@ -330,11 +331,11 @@
 .field select {
   width: 100%;
   padding: 10px 14px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background-color: #f8fafc;
+  background-color: var(--bg);
   font-size: 14px;
-  color: #1e293b;
+  color: var(--text-900);
   outline: none;
   cursor: pointer;
 }
@@ -360,7 +361,7 @@
 
 .field input:focus {
   outline: none;
-  border-color: var(--violeta-600);
+  border-color: var(--violeta-oscuro);
   background: var(--surface);
 }
 
@@ -368,8 +369,8 @@
   width: 100%;
   padding: 11px;
   margin-top: 6px;
-  background: var(--violeta-900);
-  color: white;
+  background: var(--violeta);
+  color: var(--negro);
   border: none;
   border-radius: 7px;
   font-size: 14.5px;
@@ -379,7 +380,7 @@
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: var(--violeta-800);
+  background: var(--violeta-claro);
 }
 
 .btn-primary:disabled {
@@ -505,13 +506,13 @@
   border: 1px solid var(--border);
   border-radius: 6px;
   background: var(--surface);
-  color: var(--violeta-800);
+  color: var(--text-900);
   cursor: pointer;
   white-space: nowrap;
 }
 
 .role-manager__action:hover {
-  border-color: var(--violeta-600);
+  border-color: var(--violeta-oscuro);
 }
 
 .role-manager__action--danger {

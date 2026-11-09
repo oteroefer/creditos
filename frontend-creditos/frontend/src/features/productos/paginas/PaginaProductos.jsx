@@ -6,6 +6,7 @@ import {
   darDeBajaProducto,
   listarProductos,
 } from "../api";
+import CatalogoCliente from "../componentes/CatalogoCliente";
 import FormProducto from "../componentes/FormProducto";
 import TablaProductos from "../componentes/TablaProductos";
 
@@ -37,10 +38,21 @@ function mensajeDeError(err, porDefecto) {
   return detail || porDefecto;
 }
 
+// Admin y vendedor ven la tabla con stock (el admin además puede editar).
+// El resto de los usuarios ve el catálogo en tarjetas, sin stock.
 export default function PaginaProductos() {
   const { usuario } = useAuth();
-  const esAdmin = usuario?.role === "admin";
+  if (usuario?.role === "admin" || usuario?.role === "vendedor") {
+    return <GestionProductos esAdmin={usuario.role === "admin"} />;
+  }
+  return (
+    <div className="dashboard">
+      <CatalogoCliente />
+    </div>
+  );
+}
 
+function GestionProductos({ esAdmin }) {
   const [productos, setProductos] = useState([]);
   const [verInactivos, setVerInactivos] = useState(false);
   const [valores, setValores] = useState(FORM_VACIO);
