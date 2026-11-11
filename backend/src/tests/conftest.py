@@ -71,3 +71,15 @@ def headers_admin(client):
         db.query(User).filter(User.username == "admin1").one().role = admin_role
         db.commit()
     return {"Authorization": f"Bearer {token}"}
+
+
+@pytest.fixture
+def headers_vendedor(client):
+    """Encabezados de autorización de un usuario con rol vendedor (se asigna en la base)."""
+    token = _registrar_y_loguear(client, "vendedor1")
+    with TestingSessionLocal() as db:
+        rol = db.query(Role).filter(Role.name == "vendedor").first() or Role(name="vendedor")
+        db.add(rol)
+        db.query(User).filter(User.username == "vendedor1").one().role = rol
+        db.commit()
+    return {"Authorization": f"Bearer {token}"}
