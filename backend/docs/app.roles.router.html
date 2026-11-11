@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module app.roles.router</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="app.html" class="white">app</a>.<a href="app.roles.html" class="white">roles</a>.router</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/angel-rodriguez/Proyectos/creditos/backend/src/app/roles/router.py">/home/angel-rodriguez/Proyectos/creditos/backend/src/app/roles/router.py</a></td></tr></table>
+    <p><span class="code">Rutas&nbsp;de&nbsp;roles:&nbsp;listar,&nbsp;crear,&nbsp;renombrar&nbsp;y&nbsp;eliminar.&nbsp;Solo&nbsp;para&nbsp;administradores.</span></p>
+<p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-create_role"><strong>create_role</strong></a>(role_data: app.roles.schemas.RoleCreate, db: sqlalchemy.orm.session.Session = Depends(dependency=&lt;function get_db at 0x77686a940e00&gt;, use_cache=True, scope=None), _: app.usuarios.models.User = Depends(dependency=&lt;function require_admin at 0x77686a5a6840&gt;, use_cache=True, scope=None))</dt><dd><span class="code">Crea&nbsp;un&nbsp;rol&nbsp;nuevo.&nbsp;Responde&nbsp;409&nbsp;si&nbsp;ya&nbsp;existe&nbsp;un&nbsp;rol&nbsp;con&nbsp;ese&nbsp;nombre.</span></dd></dl>
+ <dl><dt><a name="-delete_role"><strong>delete_role</strong></a>(role_id: int, db: sqlalchemy.orm.session.Session = Depends(dependency=&lt;function get_db at 0x77686a940e00&gt;, use_cache=True, scope=None), _: app.usuarios.models.User = Depends(dependency=&lt;function require_admin at 0x77686a5a6840&gt;, use_cache=True, scope=None))</dt><dd><span class="code">Elimina&nbsp;un&nbsp;rol.&nbsp;No&nbsp;se&nbsp;puede&nbsp;eliminar&nbsp;el&nbsp;rol&nbsp;admin&nbsp;ni&nbsp;un&nbsp;rol&nbsp;asignado&nbsp;a&nbsp;usuarios.</span></dd></dl>
+ <dl><dt><a name="-list_roles"><strong>list_roles</strong></a>(db: sqlalchemy.orm.session.Session = Depends(dependency=&lt;function get_db at 0x77686a940e00&gt;, use_cache=True, scope=None), _: app.usuarios.models.User = Depends(dependency=&lt;function require_admin at 0x77686a5a6840&gt;, use_cache=True, scope=None))</dt><dd><span class="code">Lista&nbsp;todos&nbsp;los&nbsp;roles&nbsp;ordenados&nbsp;por&nbsp;nombre.</span></dd></dl>
+ <dl><dt><a name="-update_role"><strong>update_role</strong></a>(role_id: int, role_data: app.roles.schemas.RoleCreate, db: sqlalchemy.orm.session.Session = Depends(dependency=&lt;function get_db at 0x77686a940e00&gt;, use_cache=True, scope=None), _: app.usuarios.models.User = Depends(dependency=&lt;function require_admin at 0x77686a5a6840&gt;, use_cache=True, scope=None))</dt><dd><span class="code">Cambia&nbsp;el&nbsp;nombre&nbsp;de&nbsp;un&nbsp;rol.&nbsp;El&nbsp;rol&nbsp;admin&nbsp;no&nbsp;se&nbsp;puede&nbsp;renombrar.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>router</strong> = &lt;fastapi.routing.APIRouter object&gt;</td></tr></table>
+</body></html>

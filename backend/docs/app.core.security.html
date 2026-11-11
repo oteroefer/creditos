@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module app.core.security</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="app.html" class="white">app</a>.<a href="app.core.html" class="white">core</a>.security</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/angel-rodriguez/Proyectos/creditos/backend/src/app/core/security.py">/home/angel-rodriguez/Proyectos/creditos/backend/src/app/core/security.py</a></td></tr></table>
+    <p><span class="code">Funciones&nbsp;de&nbsp;seguridad:&nbsp;encriptar&nbsp;contraseñas&nbsp;y&nbsp;generar&nbsp;tokens&nbsp;de&nbsp;sesión.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="jwt.html">jwt</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-create_access_token"><strong>create_access_token</strong></a>(data: dict) -&gt; str</dt><dd><span class="code">Genera&nbsp;un&nbsp;token&nbsp;JWT&nbsp;con&nbsp;los&nbsp;datos&nbsp;indicados&nbsp;que&nbsp;vence&nbsp;en&nbsp;60&nbsp;minutos.</span></dd></dl>
+ <dl><dt><a name="-hash_password"><strong>hash_password</strong></a>(password: str) -&gt; str</dt><dd><span class="code">Encripta&nbsp;la&nbsp;contraseña&nbsp;con&nbsp;bcrypt&nbsp;para&nbsp;guardarla&nbsp;en&nbsp;la&nbsp;base&nbsp;de&nbsp;datos.</span></dd></dl>
+ <dl><dt><a name="-verify_password"><strong>verify_password</strong></a>(plain_password: str, hashed_password: str) -&gt; bool</dt><dd><span class="code">Indica&nbsp;si&nbsp;la&nbsp;contraseña&nbsp;escrita&nbsp;coincide&nbsp;con&nbsp;la&nbsp;contraseña&nbsp;encriptada.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>ACCESS_TOKEN_EXPIRE_MINUTES</strong> = 60<br>
+<strong>ALGORITHM</strong> = 'HS256'<br>
+<strong>SECRET_KEY</strong> = 'dev-secret-key-cambiar-en-produccion'<br>
+<strong>pwd_context</strong> = &lt;CryptContext&gt;</td></tr></table>
+</body></html>

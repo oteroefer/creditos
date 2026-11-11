@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module app.usuarios.router</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="app.html" class="white">app</a>.<a href="app.usuarios.html" class="white">usuarios</a>.router</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/angel-rodriguez/Proyectos/creditos/backend/src/app/usuarios/router.py">/home/angel-rodriguez/Proyectos/creditos/backend/src/app/usuarios/router.py</a></td></tr></table>
+    <p><span class="code">Rutas&nbsp;de&nbsp;usuarios:&nbsp;registro,&nbsp;listado&nbsp;y&nbsp;asignación&nbsp;de&nbsp;roles.</span></p>
+<p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-assign_role"><strong>assign_role</strong></a>(user_id: int, role_update: app.usuarios.schemas.UserRoleUpdate, db: sqlalchemy.orm.session.Session = Depends(dependency=&lt;function get_db at 0x77686a940e00&gt;, use_cache=True, scope=None), _: app.usuarios.models.User = Depends(dependency=&lt;function require_admin at 0x77686a5a6840&gt;, use_cache=True, scope=None))</dt><dd><span class="code">Cambia&nbsp;o&nbsp;quita&nbsp;el&nbsp;rol&nbsp;de&nbsp;un&nbsp;usuario.&nbsp;Solo&nbsp;para&nbsp;administradores.<br>
+&nbsp;<br>
+No&nbsp;permite&nbsp;quitarle&nbsp;el&nbsp;rol&nbsp;admin&nbsp;al&nbsp;último&nbsp;administrador.</span></dd></dl>
+ <dl><dt><a name="-create_user"><strong>create_user</strong></a>(user: app.usuarios.schemas.UserCreate, db: sqlalchemy.orm.session.Session = Depends(dependency=&lt;function get_db at 0x77686a940e00&gt;, use_cache=True, scope=None))</dt><dd><span class="code">Registra&nbsp;un&nbsp;usuario&nbsp;nuevo&nbsp;con&nbsp;el&nbsp;rol&nbsp;cliente.<br>
+&nbsp;<br>
+Si&nbsp;el&nbsp;rol&nbsp;cliente&nbsp;todavía&nbsp;no&nbsp;existe&nbsp;en&nbsp;la&nbsp;base&nbsp;de&nbsp;datos,&nbsp;lo&nbsp;crea.&nbsp;Responde&nbsp;400&nbsp;si<br>
+el&nbsp;usuario&nbsp;o&nbsp;el&nbsp;email&nbsp;ya&nbsp;están&nbsp;registrados.</span></dd></dl>
+ <dl><dt><a name="-list_users"><strong>list_users</strong></a>(db: sqlalchemy.orm.session.Session = Depends(dependency=&lt;function get_db at 0x77686a940e00&gt;, use_cache=True, scope=None), _: app.usuarios.models.User = Depends(dependency=&lt;function require_admin at 0x77686a5a6840&gt;, use_cache=True, scope=None))</dt><dd><span class="code">Lista&nbsp;todos&nbsp;los&nbsp;usuarios.&nbsp;Solo&nbsp;para&nbsp;administradores.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>router</strong> = &lt;fastapi.routing.APIRouter object&gt;</td></tr></table>
+</body></html>

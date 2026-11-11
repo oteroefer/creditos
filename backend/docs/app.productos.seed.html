@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module app.productos.seed</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="app.html" class="white">app</a>.<a href="app.productos.html" class="white">productos</a>.seed</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/angel-rodriguez/Proyectos/creditos/backend/src/app/productos/seed.py">/home/angel-rodriguez/Proyectos/creditos/backend/src/app/productos/seed.py</a></td></tr></table>
+    <p><span class="code">Comando&nbsp;para&nbsp;cargar&nbsp;productos&nbsp;de&nbsp;ejemplo&nbsp;en&nbsp;el&nbsp;catálogo.<br>
+&nbsp;<br>
+Uso:&nbsp;python&nbsp;-m&nbsp;app.productos.seed<br>
+&nbsp;<br>
+Los&nbsp;productos&nbsp;cuyo&nbsp;código&nbsp;ya&nbsp;existe&nbsp;se&nbsp;saltean,&nbsp;así&nbsp;que&nbsp;se&nbsp;puede&nbsp;ejecutar&nbsp;más&nbsp;de&nbsp;una&nbsp;vez.<br>
+Las&nbsp;imágenes&nbsp;son&nbsp;de&nbsp;placehold.co&nbsp;(un&nbsp;recuadro&nbsp;con&nbsp;el&nbsp;nombre&nbsp;del&nbsp;producto);&nbsp;se&nbsp;pueden<br>
+reemplazar&nbsp;por&nbsp;fotos&nbsp;reales&nbsp;editando&nbsp;la&nbsp;URL&nbsp;desde&nbsp;la&nbsp;pantalla&nbsp;de&nbsp;Productos.</span></p>
+<p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-imagen"><strong>imagen</strong></a>(texto: str) -&gt; str</dt><dd><span class="code">Devuelve&nbsp;la&nbsp;URL&nbsp;de&nbsp;una&nbsp;imagen&nbsp;de&nbsp;400x300&nbsp;con&nbsp;el&nbsp;texto&nbsp;indicado.</span></dd></dl>
+ <dl><dt><a name="-main"><strong>main</strong></a>() -&gt; None</dt><dd><span class="code">Inserta&nbsp;los&nbsp;productos&nbsp;de&nbsp;ejemplo&nbsp;que&nbsp;todavía&nbsp;no&nbsp;estén&nbsp;cargados.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>PRODUCTOS</strong> = [{'codigo': 'TV-50', 'descripcion': 'Smart TV 4K UHD con Wi-Fi y control por voz', 'nombre': 'Televisor Smart 50 pulgadas', 'precio': Decimal('3500000'), 'stock': 8}, {'codigo': 'TV-32', 'descripcion': 'Smart TV HD con Netflix y YouTube', 'nombre': 'Televisor Smart 32 pulgadas', 'precio': Decimal('1600000'), 'stock': 15}, {'codigo': 'HEL-01', 'descripcion': 'Heladera con freezer superior, eficiencia energética A', 'nombre': 'Heladera No Frost 300 L', 'precio': Decimal('4200000'), 'stock': 5}, {'codigo': 'LAV-01', 'descripcion': 'Carga frontal, 15 programas de lavado', 'nombre': 'Lavarropas automático 8 kg', 'precio': Decimal('3100000'), 'stock': 6}, {'codigo': 'AA-12', 'descripcion': 'Split inverter frío/calor', 'nombre': 'Aire acondicionado 12000 BTU', 'precio': Decimal('3800000'), 'stock': 10}, {'codigo': 'MIC-01', 'descripcion': 'Microondas digital con grill', 'nombre': 'Microondas 20 L', 'precio': Decimal('750000'), 'stock': 20}, {'codigo': 'NB-01', 'descripcion': 'Intel Core i5, 8 GB RAM, SSD 512 GB', 'nombre': 'Notebook 15 pulgadas', 'precio': Decimal('5200000'), 'stock': 4}, {'codigo': 'CEL-01', 'descripcion': 'Pantalla 6.5 pulgadas, cámara triple', 'nombre': 'Celular 128 GB', 'precio': Decimal('2300000'), 'stock': 25}, {'codigo': 'COC-01', 'descripcion': 'Horno con encendido eléctrico', 'nombre': 'Cocina a gas 4 hornallas', 'precio': Decimal('1900000'), 'stock': 7}, {'codigo': 'VEN-01', 'descripcion': '3 velocidades, oscilante', 'nombre': 'Ventilador de pie', 'precio': Decimal('280000'), 'stock': 30}]<br>
+<strong>SessionLocal</strong> = sessionmaker(class_='Session', autocommit=False,...ntas_db), autoflush=False, expire_on_commit=True)<br>
+<strong>engine</strong> = Engine(postgresql://postgres:***@localhost:5432/ventas_db)</td></tr></table>
+</body></html>

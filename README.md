@@ -190,14 +190,15 @@ Para ver en el navegador sin generar archivos:
 cd backend\src
 python -m pydoc -b
 ```
-Para generar un archivo `.html` por módulo:
+Para generar un archivo `.html` por módulo (quedan en `backend/docs/`):
 
-```powershell
-cd backend\src
-python -m pydoc -w app app.core app.core.database app.core.security app.core.dependencies app.auth app.auth.router app.auth.schemas app.usuarios app.usuarios.models app.usuarios.schemas app.usuarios.router app.roles app.roles.models app.roles.schemas app.roles.router app.productos app.productos.models app.productos.schemas app.productos.router app.productos.seed app.bootstrap_admin app.main
+```bash
+cd backend/docs
+PYTHONPATH=../src ../src/.venv/bin/python -m pydoc -w app app.core app.core.database app.core.security app.core.dependencies app.auth app.auth.router app.auth.schemas app.usuarios app.usuarios.models app.usuarios.schemas app.usuarios.router app.roles app.roles.models app.roles.schemas app.roles.router app.productos app.productos.models app.productos.schemas app.productos.router app.productos.seed app.simulacion app.simulacion.servicio app.simulacion.schemas app.simulacion.router app.ventas app.ventas.models app.ventas.schemas app.ventas.router app.bootstrap_admin
 ```
-`app.main` se conecta a PostgreSQL al importarse: si la base no está levantada,
-quítalo del comando.
+`app.main` no se incluye porque se conecta a PostgreSQL al importarse. En Windows
+(PowerShell) el equivalente es `cd backend\docs`, definir `$env:PYTHONPATH="..\src"` y usar
+`python -m pydoc -w ...` con el entorno virtual activado.
 
 ## Estructura del backend
 

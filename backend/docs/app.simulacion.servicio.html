@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module app.simulacion.servicio</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="app.html" class="white">app</a>.<a href="app.simulacion.html" class="white">simulacion</a>.servicio</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/angel-rodriguez/Proyectos/creditos/backend/src/app/simulacion/servicio.py">/home/angel-rodriguez/Proyectos/creditos/backend/src/app/simulacion/servicio.py</a></td></tr></table>
+    <p><span class="code">Cálculo&nbsp;del&nbsp;plan&nbsp;de&nbsp;pagos&nbsp;de&nbsp;un&nbsp;crédito&nbsp;con&nbsp;el&nbsp;sistema&nbsp;francés.<br>
+&nbsp;<br>
+Es&nbsp;lógica&nbsp;pura&nbsp;(sin&nbsp;base&nbsp;de&nbsp;datos&nbsp;ni&nbsp;FastAPI)&nbsp;para&nbsp;poder&nbsp;probarla&nbsp;y&nbsp;reutilizarla,<br>
+por&nbsp;ejemplo&nbsp;desde&nbsp;el&nbsp;módulo&nbsp;de&nbsp;ventas.</span></p>
+<p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-calcular_cuota"><strong>calcular_cuota</strong></a>(monto: decimal.Decimal, tasa_anual: decimal.Decimal, cuotas: int) -&gt; decimal.Decimal</dt><dd><span class="code">Calcula&nbsp;la&nbsp;cuota&nbsp;mensual&nbsp;fija&nbsp;sin&nbsp;redondear.<br>
+&nbsp;<br>
+La&nbsp;tasa&nbsp;anual&nbsp;viene&nbsp;en&nbsp;porcentaje&nbsp;y&nbsp;se&nbsp;divide&nbsp;en&nbsp;12&nbsp;para&nbsp;obtener&nbsp;la&nbsp;tasa&nbsp;mensual.<br>
+Con&nbsp;tasa&nbsp;0&nbsp;la&nbsp;cuota&nbsp;es&nbsp;simplemente&nbsp;monto&nbsp;/&nbsp;cuotas.</span></dd></dl>
+ <dl><dt><a name="-calcular_plan"><strong>calcular_plan</strong></a>(monto: decimal.Decimal, tasa_anual: decimal.Decimal, cuotas: int) -&gt; dict</dt><dd><span class="code">Devuelve&nbsp;la&nbsp;cuota&nbsp;mensual,&nbsp;el&nbsp;total&nbsp;a&nbsp;pagar,&nbsp;los&nbsp;intereses&nbsp;y&nbsp;el&nbsp;plan&nbsp;de&nbsp;pagos.<br>
+&nbsp;<br>
+Cada&nbsp;fila&nbsp;del&nbsp;plan&nbsp;trae&nbsp;numero,&nbsp;cuota,&nbsp;interes,&nbsp;capital&nbsp;y&nbsp;saldo.&nbsp;La&nbsp;última&nbsp;cuota<br>
+se&nbsp;ajusta&nbsp;para&nbsp;absorber&nbsp;el&nbsp;redondeo,&nbsp;de&nbsp;modo&nbsp;que&nbsp;el&nbsp;saldo&nbsp;final&nbsp;sea&nbsp;exactamente&nbsp;0.</span></dd></dl>
+ <dl><dt><a name="-redondear"><strong>redondear</strong></a>(valor: decimal.Decimal) -&gt; decimal.Decimal</dt><dd><span class="code">Redondea&nbsp;un&nbsp;monto&nbsp;a&nbsp;2&nbsp;decimales&nbsp;(mitad&nbsp;hacia&nbsp;arriba).</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>CENTAVOS</strong> = Decimal('0.01')<br>
+<strong>ROUND_HALF_UP</strong> = 'ROUND_HALF_UP'</td></tr></table>
+</body></html>
