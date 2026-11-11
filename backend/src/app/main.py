@@ -5,7 +5,9 @@ from app.core.database import Base, engine, ensure_product_schema, ensure_role_s
 from app.auth.router import router as auth_router
 from app.productos.router import router as productos_router
 from app.roles.router import router as roles_router
+from app.simulacion.router import router as simulacion_router
 from app.usuarios.router import router as usuarios_router
+from app.ventas.router import router as ventas_router
 
 Base.metadata.create_all(bind=engine)
 ensure_role_schema()
@@ -17,3 +19,5 @@ app.include_router(usuarios_router)
 app.include_router(auth_router)
 app.include_router(roles_router)
 app.include_router(productos_router)
+app.include_router(simulacion_router)
+app.include_router(ventas_router)
