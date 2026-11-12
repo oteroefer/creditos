@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module app.ventas.router</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="app.html" class="white">app</a>.<a href="app.ventas.html" class="white">ventas</a>.router</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/angel-rodriguez/Proyectos/creditos/backend/src/app/ventas/router.py">/home/angel-rodriguez/Proyectos/creditos/backend/src/app/ventas/router.py</a></td></tr></table>
+    <p><span class="code">Rutas&nbsp;de&nbsp;ventas.<br>
+&nbsp;<br>
+Solo&nbsp;vendedores&nbsp;y&nbsp;administradores&nbsp;registran&nbsp;ventas.&nbsp;Vendedores&nbsp;y&nbsp;administradores&nbsp;ven<br>
+todas&nbsp;las&nbsp;ventas;&nbsp;un&nbsp;cliente&nbsp;ve&nbsp;únicamente&nbsp;las&nbsp;suyas.</span></p>
+<p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-crear_venta"><strong>crear_venta</strong></a>(datos: app.ventas.schemas.VentaCreate, db: sqlalchemy.orm.session.Session = Depends(dependency=&lt;function get_db at 0x77686a940e00&gt;, use_cache=True, scope=None), vendedor: app.usuarios.models.User = Depends(dependency=&lt;function require_vendedor at 0x7768685e8a40&gt;, use_cache=True, scope=None))</dt><dd><span class="code">Registra&nbsp;la&nbsp;venta&nbsp;de&nbsp;un&nbsp;producto&nbsp;a&nbsp;un&nbsp;cliente&nbsp;y&nbsp;descuenta&nbsp;el&nbsp;stock.<br>
+&nbsp;<br>
+Guarda&nbsp;el&nbsp;precio&nbsp;y&nbsp;el&nbsp;total&nbsp;del&nbsp;momento.&nbsp;Si&nbsp;se&nbsp;envían&nbsp;cuotas&nbsp;y&nbsp;tasa_anual&nbsp;calcula<br>
+la&nbsp;cuota&nbsp;mensual&nbsp;con&nbsp;el&nbsp;módulo&nbsp;de&nbsp;simulación.<br>
+Errores:&nbsp;404&nbsp;si&nbsp;el&nbsp;cliente&nbsp;no&nbsp;existe&nbsp;o&nbsp;el&nbsp;producto&nbsp;no&nbsp;existe&nbsp;o&nbsp;está&nbsp;inactivo,<br>
+409&nbsp;si&nbsp;no&nbsp;hay&nbsp;stock&nbsp;suficiente.</span></dd></dl>
+ <dl><dt><a name="-es_personal_de_ventas"><strong>es_personal_de_ventas</strong></a>(user: app.usuarios.models.User) -&gt; bool</dt><dd><span class="code">Indica&nbsp;si&nbsp;el&nbsp;usuario&nbsp;es&nbsp;vendedor&nbsp;o&nbsp;administrador.</span></dd></dl>
+ <dl><dt><a name="-listar_ventas"><strong>listar_ventas</strong></a>(db: sqlalchemy.orm.session.Session = Depends(dependency=&lt;function get_db at 0x77686a940e00&gt;, use_cache=True, scope=None), user: app.usuarios.models.User = Depends(dependency=&lt;function get_current_user at 0x77686a5a6700&gt;, use_cache=True, scope=None))</dt><dd><span class="code">Lista&nbsp;las&nbsp;ventas,&nbsp;de&nbsp;la&nbsp;más&nbsp;reciente&nbsp;a&nbsp;la&nbsp;más&nbsp;antigua.<br>
+&nbsp;<br>
+Vendedores&nbsp;y&nbsp;administradores&nbsp;ven&nbsp;todas;&nbsp;un&nbsp;cliente&nbsp;solo&nbsp;las&nbsp;suyas.</span></dd></dl>
+ <dl><dt><a name="-require_vendedor"><strong>require_vendedor</strong></a>(user: app.usuarios.models.User = Depends(dependency=&lt;function get_current_user at 0x77686a5a6700&gt;, use_cache=True, scope=None)) -&gt; app.usuarios.models.User</dt><dd><span class="code">Devuelve&nbsp;el&nbsp;usuario&nbsp;si&nbsp;es&nbsp;vendedor&nbsp;o&nbsp;admin;&nbsp;si&nbsp;no,&nbsp;responde&nbsp;403.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>ROLES_VENDEDORES</strong> = ('vendedor', 'admin')<br>
+<strong>router</strong> = &lt;fastapi.routing.APIRouter object&gt;</td></tr></table>
+</body></html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module app.core.database</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="app.html" class="white">app</a>.<a href="app.core.html" class="white">core</a>.database</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/angel-rodriguez/Proyectos/creditos/backend/src/app/core/database.py">/home/angel-rodriguez/Proyectos/creditos/backend/src/app/core/database.py</a></td></tr></table>
+    <p><span class="code">Conexión&nbsp;a&nbsp;la&nbsp;base&nbsp;de&nbsp;datos&nbsp;PostgreSQL&nbsp;y&nbsp;manejo&nbsp;de&nbsp;sesiones.</span></p>
+<p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-ensure_product_schema"><strong>ensure_product_schema</strong></a>()</dt><dd><span class="code">Agrega&nbsp;la&nbsp;columna&nbsp;imagen_url&nbsp;a&nbsp;la&nbsp;tabla&nbsp;products&nbsp;si&nbsp;todavía&nbsp;no&nbsp;existe.<br>
+&nbsp;<br>
+Sirve&nbsp;para&nbsp;bases&nbsp;de&nbsp;datos&nbsp;creadas&nbsp;antes&nbsp;de&nbsp;que&nbsp;los&nbsp;productos&nbsp;tuvieran&nbsp;imagen.</span></dd></dl>
+ <dl><dt><a name="-ensure_role_schema"><strong>ensure_role_schema</strong></a>()</dt><dd><span class="code">Agrega&nbsp;la&nbsp;columna&nbsp;role_id&nbsp;a&nbsp;la&nbsp;tabla&nbsp;users&nbsp;si&nbsp;todavía&nbsp;no&nbsp;existe.<br>
+&nbsp;<br>
+Sirve&nbsp;para&nbsp;bases&nbsp;de&nbsp;datos&nbsp;creadas&nbsp;antes&nbsp;de&nbsp;que&nbsp;existieran&nbsp;los&nbsp;roles.</span></dd></dl>
+ <dl><dt><a name="-get_db"><strong>get_db</strong></a>()</dt><dd><span class="code">Abre&nbsp;una&nbsp;sesión&nbsp;de&nbsp;base&nbsp;de&nbsp;datos&nbsp;para&nbsp;cada&nbsp;petición&nbsp;y&nbsp;la&nbsp;cierra&nbsp;al&nbsp;terminar.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>DATABASE_URL</strong> = 'postgresql://postgres:postgre123@localhost:5432/ventas_db'<br>
+<strong>SessionLocal</strong> = sessionmaker(class_='Session', autocommit=False,...ntas_db), autoflush=False, expire_on_commit=True)<br>
+<strong>engine</strong> = Engine(postgresql://postgres:***@localhost:5432/ventas_db)</td></tr></table>
+</body></html>

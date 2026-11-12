@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module app.core.dependencies</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="app.html" class="white">app</a>.<a href="app.core.html" class="white">core</a>.dependencies</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/angel-rodriguez/Proyectos/creditos/backend/src/app/core/dependencies.py">/home/angel-rodriguez/Proyectos/creditos/backend/src/app/core/dependencies.py</a></td></tr></table>
+    <p><span class="code">Permisos&nbsp;de&nbsp;las&nbsp;rutas:&nbsp;obtener&nbsp;el&nbsp;usuario&nbsp;que&nbsp;inició&nbsp;sesión&nbsp;y&nbsp;exigir&nbsp;rol&nbsp;admin.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="jwt.html">jwt</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-get_current_user"><strong>get_current_user</strong></a>(credentials: fastapi.security.http.HTTPAuthorizationCredentials | None = Depends(dependency=&lt;fastapi.security.http.HTTPBearer object at 0x77686916d4f0&gt;, use_cache=True, scope=None), db: sqlalchemy.orm.session.Session = Depends(dependency=&lt;function get_db at 0x77686a940e00&gt;, use_cache=True, scope=None)) -&gt; app.usuarios.models.User</dt><dd><span class="code">Devuelve&nbsp;el&nbsp;usuario&nbsp;dueño&nbsp;del&nbsp;token&nbsp;enviado&nbsp;en&nbsp;la&nbsp;petición.<br>
+&nbsp;<br>
+Responde&nbsp;401&nbsp;si&nbsp;no&nbsp;hay&nbsp;token,&nbsp;si&nbsp;es&nbsp;inválido&nbsp;o&nbsp;vencido,&nbsp;o&nbsp;si&nbsp;el&nbsp;usuario&nbsp;ya&nbsp;no&nbsp;existe.</span></dd></dl>
+ <dl><dt><a name="-require_admin"><strong>require_admin</strong></a>(user: app.usuarios.models.User = Depends(dependency=&lt;function get_current_user at 0x77686a5a6700&gt;, use_cache=True, scope=None)) -&gt; app.usuarios.models.User</dt><dd><span class="code">Devuelve&nbsp;el&nbsp;usuario&nbsp;si&nbsp;tiene&nbsp;rol&nbsp;admin;&nbsp;si&nbsp;no,&nbsp;responde&nbsp;403.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>ALGORITHM</strong> = 'HS256'<br>
+<strong>SECRET_KEY</strong> = 'dev-secret-key-cambiar-en-produccion'<br>
+<strong>bearer_scheme</strong> = &lt;fastapi.security.http.HTTPBearer object&gt;</td></tr></table>
+</body></html>

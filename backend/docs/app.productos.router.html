@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module app.productos.router</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="app.html" class="white">app</a>.<a href="app.productos.html" class="white">productos</a>.router</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/angel-rodriguez/Proyectos/creditos/backend/src/app/productos/router.py">/home/angel-rodriguez/Proyectos/creditos/backend/src/app/productos/router.py</a></td></tr></table>
+    <p><span class="code">Rutas&nbsp;del&nbsp;catálogo&nbsp;de&nbsp;productos.<br>
+&nbsp;<br>
+Cualquier&nbsp;usuario&nbsp;con&nbsp;sesión&nbsp;iniciada&nbsp;puede&nbsp;ver&nbsp;los&nbsp;productos&nbsp;activos.&nbsp;Solo&nbsp;los<br>
+administradores&nbsp;pueden&nbsp;crear,&nbsp;modificar,&nbsp;eliminar&nbsp;o&nbsp;ver&nbsp;los&nbsp;productos&nbsp;inactivos.</span></p>
+<p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-buscar_producto"><strong>buscar_producto</strong></a>(product_id: int, db: sqlalchemy.orm.session.Session) -&gt; app.productos.models.Product</dt><dd><span class="code">Devuelve&nbsp;el&nbsp;producto&nbsp;con&nbsp;ese&nbsp;id&nbsp;o&nbsp;responde&nbsp;404&nbsp;si&nbsp;no&nbsp;existe.</span></dd></dl>
+ <dl><dt><a name="-create_product"><strong>create_product</strong></a>(product_data: app.productos.schemas.ProductCreate, db: sqlalchemy.orm.session.Session = Depends(dependency=&lt;function get_db at 0x77686a940e00&gt;, use_cache=True, scope=None), _: app.usuarios.models.User = Depends(dependency=&lt;function require_admin at 0x77686a5a6840&gt;, use_cache=True, scope=None))</dt><dd><span class="code">Da&nbsp;de&nbsp;alta&nbsp;un&nbsp;producto.&nbsp;Responde&nbsp;409&nbsp;si&nbsp;ya&nbsp;existe&nbsp;otro&nbsp;con&nbsp;el&nbsp;mismo&nbsp;código.</span></dd></dl>
+ <dl><dt><a name="-delete_product"><strong>delete_product</strong></a>(product_id: int, db: sqlalchemy.orm.session.Session = Depends(dependency=&lt;function get_db at 0x77686a940e00&gt;, use_cache=True, scope=None), _: app.usuarios.models.User = Depends(dependency=&lt;function require_admin at 0x77686a5a6840&gt;, use_cache=True, scope=None))</dt><dd><span class="code">Da&nbsp;de&nbsp;baja&nbsp;un&nbsp;producto&nbsp;(borrado&nbsp;lógico):&nbsp;queda&nbsp;inactivo&nbsp;pero&nbsp;sigue&nbsp;en&nbsp;la&nbsp;base.</span></dd></dl>
+ <dl><dt><a name="-es_admin"><strong>es_admin</strong></a>(user: app.usuarios.models.User) -&gt; bool</dt><dd><span class="code">Indica&nbsp;si&nbsp;el&nbsp;usuario&nbsp;tiene&nbsp;el&nbsp;rol&nbsp;admin.</span></dd></dl>
+ <dl><dt><a name="-get_product"><strong>get_product</strong></a>(product_id: int, db: sqlalchemy.orm.session.Session = Depends(dependency=&lt;function get_db at 0x77686a940e00&gt;, use_cache=True, scope=None), user: app.usuarios.models.User = Depends(dependency=&lt;function get_current_user at 0x77686a5a6700&gt;, use_cache=True, scope=None))</dt><dd><span class="code">Devuelve&nbsp;un&nbsp;producto.&nbsp;Los&nbsp;inactivos&nbsp;solo&nbsp;los&nbsp;puede&nbsp;ver&nbsp;un&nbsp;administrador.</span></dd></dl>
+ <dl><dt><a name="-guardar"><strong>guardar</strong></a>(product: app.productos.models.Product, db: sqlalchemy.orm.session.Session) -&gt; app.productos.models.Product</dt><dd><span class="code">Guarda&nbsp;los&nbsp;cambios&nbsp;del&nbsp;producto.&nbsp;Responde&nbsp;409&nbsp;si&nbsp;el&nbsp;código&nbsp;ya&nbsp;lo&nbsp;usa&nbsp;otro&nbsp;producto.</span></dd></dl>
+ <dl><dt><a name="-list_products"><strong>list_products</strong></a>(incluir_inactivos: bool = False, db: sqlalchemy.orm.session.Session = Depends(dependency=&lt;function get_db at 0x77686a940e00&gt;, use_cache=True, scope=None), user: app.usuarios.models.User = Depends(dependency=&lt;function get_current_user at 0x77686a5a6700&gt;, use_cache=True, scope=None))</dt><dd><span class="code">Lista&nbsp;los&nbsp;productos&nbsp;ordenados&nbsp;por&nbsp;nombre.<br>
+&nbsp;<br>
+Por&nbsp;defecto&nbsp;solo&nbsp;devuelve&nbsp;los&nbsp;activos.&nbsp;Con&nbsp;incluir_inactivos=true&nbsp;un&nbsp;administrador<br>
+ve&nbsp;también&nbsp;los&nbsp;dados&nbsp;de&nbsp;baja;&nbsp;para&nbsp;el&nbsp;resto&nbsp;de&nbsp;los&nbsp;usuarios&nbsp;el&nbsp;parámetro&nbsp;se&nbsp;ignora.</span></dd></dl>
+ <dl><dt><a name="-update_product"><strong>update_product</strong></a>(product_id: int, product_data: app.productos.schemas.ProductUpdate, db: sqlalchemy.orm.session.Session = Depends(dependency=&lt;function get_db at 0x77686a940e00&gt;, use_cache=True, scope=None), _: app.usuarios.models.User = Depends(dependency=&lt;function require_admin at 0x77686a5a6840&gt;, use_cache=True, scope=None))</dt><dd><span class="code">Modifica&nbsp;los&nbsp;campos&nbsp;enviados&nbsp;de&nbsp;un&nbsp;producto.&nbsp;También&nbsp;sirve&nbsp;para&nbsp;reactivarlo.<br>
+&nbsp;<br>
+La&nbsp;descripción&nbsp;y&nbsp;la&nbsp;imagen&nbsp;se&nbsp;pueden&nbsp;borrar&nbsp;enviando&nbsp;null;&nbsp;el&nbsp;resto&nbsp;de&nbsp;los&nbsp;campos<br>
+no&nbsp;admite&nbsp;null.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>router</strong> = &lt;fastapi.routing.APIRouter object&gt;</td></tr></table>
+</body></html>
