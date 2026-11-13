@@ -1,8 +1,11 @@
 """Rutas de ventas.
 
-Solo vendedores y administradores registran ventas. Vendedores y administradores ven
-todas las ventas; un cliente ve únicamente las suyas.
+Solo vendedores y administradores registran ventas desde el panel de ventas. Un cliente
+puede comprar a crédito por su cuenta con /ventas/solicitar. Vendedores y administradores
+ven todas las ventas; un cliente ve únicamente las suyas.
 """
+
+from decimal import Decimal
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -13,11 +16,15 @@ from app.productos.models import Product
 from app.simulacion.servicio import calcular_plan
 from app.usuarios.models import User
 from app.ventas.models import Venta
-from app.ventas.schemas import VentaCreate, VentaOut
+from app.ventas.schemas import SolicitudCompra, VentaCreate, VentaOut
 
 router = APIRouter(prefix="/ventas", tags=["ventas"])
 
 ROLES_VENDEDORES = ("vendedor", "admin")
+
+# Tasa anual (%) de las compras a crédito que hace el cliente desde la web. Si se cambia
+# acá, hay que cambiar también TASA_ANUAL en el frontend (PaginaDetalleProducto.jsx).
+TASA_ANUAL_ONLINE = Decimal("24")
 
 
 def es_personal_de_ventas(user: User) -> bool:
@@ -71,6 +78,54 @@ def crear_venta(
         total=total,
         cuotas=datos.cuotas,
         tasa_anual=datos.tasa_anual,
+        cuota_mensual=cuota_mensual,
+    )
+    db.add(venta)
+    db.commit()
+    db.refresh(venta)
+    return venta
+
+
+@router.post("/solicitar", response_model=VentaOut, status_code=201)
+def solicitar_compra(
+    datos: SolicitudCompra,
+    db: Session = Depends(get_db),
+    cliente: User = Depends(get_current_user),
+):
+    """Un cliente compra a crédito una unidad de un producto por su cuenta.
+
+    La tasa la fija el servidor (TASA_ANUAL_ONLINE). Como la tabla de ventas exige un
+    vendedor, una compra hecha por el propio cliente se guarda con él mismo en
+    vendedor_id: significa "compra online, sin vendedor". Descuenta el stock.
+    Errores: 403 si quien llama es vendedor o admin (ellos usan POST /ventas/),
+    404 si el producto no existe o está inactivo, 409 si no hay stock.
+    """
+    if es_personal_de_ventas(cliente):
+        raise HTTPException(
+            status_code=403,
+            detail="Los vendedores y administradores registran ventas desde el panel de ventas",
+        )
+
+    producto = db.query(Product).filter(Product.id == datos.producto_id).first()
+    if producto is None or not producto.activo:
+        raise HTTPException(status_code=404, detail="Producto no encontrado")
+
+    if producto.stock < 1:
+        raise HTTPException(status_code=409, detail="Producto sin stock")
+
+    total = producto.precio
+    cuota_mensual = calcular_plan(total, TASA_ANUAL_ONLINE, datos.cuotas)["cuota_mensual"]
+
+    producto.stock -= 1
+    venta = Venta(
+        cliente_id=cliente.id,
+        vendedor_id=cliente.id,
+        producto_id=producto.id,
+        cantidad=1,
+        precio_unitario=producto.precio,
+        total=total,
+        cuotas=datos.cuotas,
+        tasa_anual=TASA_ANUAL_ONLINE,
         cuota_mensual=cuota_mensual,
     )
     db.add(venta)

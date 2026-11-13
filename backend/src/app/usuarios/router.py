@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
 
 from app.core.database import get_db
-from app.core.dependencies import require_admin
+from app.core.dependencies import get_current_user, require_admin
 from app.roles.models import Role
 from app.usuarios.models import User
 from app.usuarios.schemas import UserCreate, UserOut, UserRoleUpdate
@@ -13,11 +13,32 @@ from app.core.security import hash_password
 
 router = APIRouter(prefix="/users", tags=["users"])
 
+ROLES_VENDEDORES = ("vendedor", "admin")
+
+
+def require_vendedor_o_admin(user: User = Depends(get_current_user)) -> User:
+    """Devuelve el usuario si es vendedor o admin; si no, responde 403."""
+    if user.role is None or user.role.name not in ROLES_VENDEDORES:
+        raise HTTPException(status_code=403, detail="Se requiere el rol de vendedor o administrador")
+    return user
+
 
 @router.get("/", response_model=list[UserOut])
 def list_users(db: Session = Depends(get_db), _: User = Depends(require_admin)):
     """Lista todos los usuarios. Solo para administradores."""
     return db.query(User).order_by(User.id).all()
+
+
+@router.get("/clientes", response_model=list[UserOut])
+def list_clientes(db: Session = Depends(get_db), _: User = Depends(require_vendedor_o_admin)):
+    """Lista solo los usuarios con rol cliente. Para vendedores y administradores."""
+    return (
+        db.query(User)
+        .join(Role)
+        .filter(Role.name == "cliente")
+        .order_by(User.username)
+        .all()
+    )
 
 
 @router.post("/", response_model=UserOut, status_code=201)

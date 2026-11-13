@@ -21,3 +21,4 @@ app.include_router(roles_router)
 app.include_router(productos_router)
 app.include_router(simulacion_router)
 app.include_router(ventas_router)
+

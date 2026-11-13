@@ -116,3 +116,4 @@ def delete_product(
     product = buscar_producto(product_id, db)
     product.activo = False
     db.commit()
+

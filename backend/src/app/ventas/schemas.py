@@ -23,6 +23,16 @@ class VentaCreate(BaseModel):
         return self
 
 
+class SolicitudCompra(BaseModel):
+    """Compra a crédito de una unidad que hace un cliente por su cuenta.
+
+    El cliente solo elige producto y cuotas: la tasa la fija el servidor.
+    """
+
+    producto_id: int
+    cuotas: int = Field(ge=1, le=120)
+
+
 class VentaOut(BaseModel):
     """Venta registrada."""
 
